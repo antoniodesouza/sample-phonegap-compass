@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta name="Copyright" content="&copy; 2012, Intel Corporation" />
+  <!--
+   * Copyright (c) 2012, Intel Corporation
+   * File revision: 16 October 2012
+   * Please see http://software.intel.com/html5/license/samples 
+   * and the included README.md file for license terms and conditions.
+  -->
+<title> PhoneGap Compass </title>
+    <meta name="viewport" content="width=device-width"> 
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<!--    <script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script> -->
+    <script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery.mobile-1.1.1.min.js"></script>
+    <script type="text/javascript" src="js/compass.js"></script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.1.1.min.css">   
+    <link rel="stylesheet" href="css/compass.css" type="text/css">
+</head>
+<body>
+        <div data-role="page" id="page1">
+            <div data-role="header">
+                <h1>Compass</h1>
+            </div>
+            <div data-role="content">
+                <div id=compass></div>
+                <div id=needle></div>
+                <div id=info-panel></div>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <select data-role="slider" name="control" id="control">
+                    <option value="on">Run</option>
+                    <option value="off">Stop</option>
+                </select>
+                <select data-role="slider" name="freeze" id="freeze">
+                    <option value="on">Needle Free</option>
+                    <option value="off">North Freeze</option>
+                </select>
+            </div>
+        </div>
+</body>
+</html>
