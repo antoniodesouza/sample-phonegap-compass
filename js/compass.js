@@ -1,23 +1,37 @@
 /*
  * Copyright (c) 2012, Intel Corporation
- * File revision: 16 October 2012
+ * File revision: 31 October 2012
  * Please see http://software.intel.com/html5/license/samples 
  * and the included README.md file for license terms and conditions.
  */
 
+// Object for rotation for different modes after button Freeze
+var rotate_object = null;
+function startNeedle() {
+    rotate_object.style['-webkit-transform'] = 'rotate(0deg)';
+    rotate_object = document.getElementById('needle');
+}
+
+function startCompass() {
+    rotate_object.style['-webkit-transform'] = 'translateX(-12px) rotate(0deg)';
+    rotate_object = document.getElementById('compass');
+}
+
+
+// Array of names for directions for Info panel
+var directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N'];
+function direction(heading) {
+    var dir = Math.abs(parseInt((heading) / 45) + 1);
+    return directions[dir];
+}
+
+
+// Handlers
+document.addEventListener("deviceready", onDeviceReady, false);
 
 // The watch id references the current `watchHeading`
 var watchID = null;
 
-// Wait for Cordova to load
-//
-document.addEventListener("deviceready", onDeviceReady, false);
-
-
-var rotate_object = null;
-
-// Cordova is ready
-//
 function onDeviceReady() {
     $('#control').change(function (event) {
         if (event.currentTarget.value == "on")
@@ -35,7 +49,6 @@ function onDeviceReady() {
         );
 
     rotate_object = document.getElementById('needle');
-    rotate_object.type = 1;
     startWatch();
 }
 
@@ -44,7 +57,7 @@ function onDeviceReady() {
 //
 function startWatch() {
 
-    var options = { frequency: 50 };
+    var options = { frequency: 100 };
 
     watchID = navigator.compass.watchHeading(onSuccess, onError, options);
     $('#freeze+div').show();
@@ -60,42 +73,21 @@ function stopWatch() {
     }
 }
 
-
-function startNeedle() {
-    previous_value = 0;
-    previous_sign = 1;
-    rotate_object.style['-webkit-transform'] = 'rotate(0deg)';
-    rotate_object = document.getElementById('needle');
-    rotate_object.type = 1;
-}
-
-function startCompass() {
-    rotate_object.style['-webkit-transform'] = 'translateX(-12px) rotate(0deg)';
-    rotate_object = document.getElementById('compass');
-    rotate_object.type = -1;
-}
-
-
-var directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N'];
-function direction(heading) {
-    var dir = Math.abs(parseInt((heading) / 45) + 1);
-    return directions[dir];
-}
-
 // onSuccess: Get the current heading
 //
 function onSuccess(heading) {
     var transform = null;
-    if (rotate_object.type > 0) {
+    if (rotate_object.id == 'needle') {
         transform = ' translateX(-12px) rotate(' + (360 - heading.magneticHeading) + 'deg)';
     }
     else {
         transform = 'rotate(' + -1 * (heading.magneticHeading) + 'deg)';
     }
     rotate_object.style['-webkit-transform'] = transform;
-    console.log(rotate_object.style['-webkit-transform']);
-    var info = document.getElementById('info-panel');
-    info.innerHTML = direction(heading.magneticHeading) + '<br>' + parseInt(heading.magneticHeading) + ' &deg;';
+
+    // Change Info panel
+    document.getElementById('info-panel').innerHTML = 
+        direction(heading.magneticHeading) + '<br>' + parseInt(heading.magneticHeading) + ' &deg;';
 }
 
 // onError: Failed to get the heading

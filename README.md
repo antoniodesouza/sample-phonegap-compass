@@ -7,6 +7,11 @@ License Information Follows
 * js/compass.js
 * resource/compass_rose.png
 * resource/needle.png
+* app.json
+* config.xml
+* icon.png
+* README.md
+* screenshot.png
 
 Copyright (c) 2012, Intel Corporation
 
@@ -49,17 +54,11 @@ Copyright (c) 2012, jQuery Foundation and other contributors.
 
 Cordova (PhoneGap) Library
 --------------------------
-* js/cordova-2.0.0.js
+* cordova.js
 
 * source:  http://www.phonegap.com/
 * license:  http://www.apache.org/licenses/LICENSE-2.0.html
 
-
-IMAGES
-------
-All images and icons were created by Intel Corporation and are licensed
-under the Creative Commons Attribution 3.0 license 
-http://creativecommons.org/licenses/by/3.0/us/
 
 
 
