@@ -1,5 +1,12 @@
 This sample application demonstrates the use of the PhoneGap Compass API
 
+Intel(R) HTML5 Development Environment Beta
+-------------------------------------------
+This sample is part of the Intel(R) HTML5 Development Environment tool. 
+Please sign up the beta at http://software.intel.com/en-us/html5.
+To see the technical detail of the sample, please visit the sample article page 
+at http://software.intel.com/en-us/articles/phonegap-compass-api. 
+
 License Information Follows
 ---------------------------
 * index.html
