@@ -5,5 +5,5 @@
 	"description":"A compass application to demonstrate the use of the PhoneGap Compass API.",
 	"articleurl":"http://software.intel.com/en-us/articles/phonegap-compass-api",
 	"categories":["PhoneGap"],
-	"visible": "true"
+	"visible": "false"
 }
